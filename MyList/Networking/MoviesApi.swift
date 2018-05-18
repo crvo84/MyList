@@ -7,11 +7,48 @@
 //
 
 import Foundation
+import Moya
 
 enum MoviesApi {
     case popular(page: Int)
 }
 
-extension MoviesApi {
-    
+extension MoviesApi: TargetType {
+    var baseURL: URL {
+        return URL(string: "https://api.themoviedb.org/3/movie")!
+    }
+
+    var path: String {
+        switch self {
+        case .popular:
+            return "/popular"
+        }
+    }
+
+    var method: Method {
+        switch self {
+        case .popular:
+            return .get
+        }
+    }
+
+    var sampleData: Data {
+        return Data() // TODO: implement for tests
+    }
+
+    var task: Task {
+        switch self {
+        case let .popular(page):
+            return .request
+
+        }
+    }
+
+    // MARK: Helper methods
+
+    private func popularRequestParameters(page: Int) -> [String: Any] {
+        return [
+            
+        ]
+    }
 }
