@@ -13,6 +13,8 @@
 		730E197920AE617700BACDAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 730E197820AE617700BACDAA /* Assets.xcassets */; };
 		730E197C20AE617700BACDAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 730E197A20AE617700BACDAA /* LaunchScreen.storyboard */; };
 		730E198A20AE6E3A00BACDAA /* BindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730E198920AE6E3A00BACDAA /* BindableType.swift */; };
+		730E198D20AE92D900BACDAA /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730E198C20AE92D900BACDAA /* Movie.swift */; };
+		730E199020AE99AF00BACDAA /* MoviesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730E198F20AE99AF00BACDAA /* MoviesApi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		730E197B20AE617700BACDAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		730E197D20AE617700BACDAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		730E198920AE6E3A00BACDAA /* BindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableType.swift; sourceTree = "<group>"; };
+		730E198C20AE92D900BACDAA /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		730E198F20AE99AF00BACDAA /* MoviesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesApi.swift; sourceTree = "<group>"; };
 		CC975916B8342FACF0339A65 /* Pods-MyList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyList/Pods-MyList.debug.xcconfig"; sourceTree = "<group>"; };
 		EAA9BEB5D7D777395150B180 /* Pods-MyList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyList.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyList/Pods-MyList.release.xcconfig"; sourceTree = "<group>"; };
 		F0B1D579FEBC44F1568F6379 /* Pods_MyList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +72,7 @@
 				730E198820AE6CE500BACDAA /* Controllers */,
 				730E198520AE6CB200BACDAA /* Services */,
 				730E198620AE6CC100BACDAA /* Extensions */,
+				730E198E20AE998400BACDAA /* Networking */,
 				730E197820AE617700BACDAA /* Assets.xcassets */,
 				730E197D20AE617700BACDAA /* Info.plist */,
 				730E198B20AE700800BACDAA /* Other Resources */,
@@ -100,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				730E198920AE6E3A00BACDAA /* BindableType.swift */,
+				730E198C20AE92D900BACDAA /* Movie.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -117,6 +123,14 @@
 				730E197A20AE617700BACDAA /* LaunchScreen.storyboard */,
 			);
 			path = "Other Resources";
+			sourceTree = "<group>";
+		};
+		730E198E20AE998400BACDAA /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				730E198F20AE99AF00BACDAA /* MoviesApi.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		AFF5642787AFBE9971F584DC /* Pods */ = {
@@ -231,24 +245,24 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MyList/Pods-MyList-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Action/Action.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
-				"${BUILT_PRODUCTS_DIR}/RxRealm/RxRealm.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Action.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRealm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
@@ -266,6 +280,8 @@
 			files = (
 				730E198A20AE6E3A00BACDAA /* BindableType.swift in Sources */,
 				730E197220AE617600BACDAA /* AppDelegate.swift in Sources */,
+				730E198D20AE92D900BACDAA /* Movie.swift in Sources */,
+				730E199020AE99AF00BACDAA /* MoviesApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
