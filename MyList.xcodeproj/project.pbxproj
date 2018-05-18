@@ -62,15 +62,15 @@
 			isa = PBXGroup;
 			children = (
 				730E197120AE617600BACDAA /* AppDelegate.swift */,
+				730E197520AE617600BACDAA /* Main.storyboard */,
 				730E198720AE6CCF00BACDAA /* Model */,
 				730E198420AE6C8500BACDAA /* Scenes */,
 				730E198820AE6CE500BACDAA /* Controllers */,
 				730E198520AE6CB200BACDAA /* Services */,
 				730E198620AE6CC100BACDAA /* Extensions */,
 				730E197820AE617700BACDAA /* Assets.xcassets */,
-				730E197520AE617600BACDAA /* Main.storyboard */,
-				730E197A20AE617700BACDAA /* LaunchScreen.storyboard */,
 				730E197D20AE617700BACDAA /* Info.plist */,
+				730E198B20AE700800BACDAA /* Other Resources */,
 			);
 			path = MyList;
 			sourceTree = "<group>";
@@ -109,6 +109,14 @@
 			children = (
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		730E198B20AE700800BACDAA /* Other Resources */ = {
+			isa = PBXGroup;
+			children = (
+				730E197A20AE617700BACDAA /* LaunchScreen.storyboard */,
+			);
+			path = "Other Resources";
 			sourceTree = "<group>";
 		};
 		AFF5642787AFBE9971F584DC /* Pods */ = {
@@ -392,8 +400,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9F26XL4W94;
-				INFOPLIST_FILE = MyList/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				INFOPLIST_FILE = "$(SRCROOT)/MyList/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.villou.MyList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -408,8 +419,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9F26XL4W94;
-				INFOPLIST_FILE = MyList/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				INFOPLIST_FILE = "$(SRCROOT)/MyList/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.villou.MyList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
