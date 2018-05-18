@@ -4,9 +4,17 @@ platform :ios, '10.0'
 use_frameworks!
 
 target 'MyList' do
+    pod 'SnapKit', '~> 4.0.0'
+    pod 'RealmSwift'
+
+    # RxSwift
     pod 'RxSwift', '~> 4.0'
     pod 'RxCocoa', '~> 4.0'
-    pod 'SnapKit', '~> 4.0.0'
+
+    # RxSwiftCommunity
+    pod 'RxDataSources', '~> 3.0'
+    pod 'Action'
+    pod "RxRealm"
 end
 
 # RxTest and RxBlocking make the most sense in the context of unit/integration tests
