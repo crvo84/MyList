@@ -25,7 +25,7 @@ extension MoviesApi: TargetType {
         }
     }
 
-    var method: Method {
+    var method: Moya.Method {
         switch self {
         case .popular:
             return .get
@@ -39,8 +39,15 @@ extension MoviesApi: TargetType {
     var task: Task {
         switch self {
         case let .popular(page):
-            return .request
+            return .requestParameters(parameters: popularRequestParameters(page: page),
+                                      encoding: URLEncoding.queryString)
+        }
+    }
 
+    var headers: [String : String]? {
+        switch self {
+        case .popular:
+            return nil
         }
     }
 
@@ -48,7 +55,9 @@ extension MoviesApi: TargetType {
 
     private func popularRequestParameters(page: Int) -> [String: Any] {
         return [
-            
+            "api_key": Secrets.Api.key,
+            "page": page,
+            "language": "en-US"
         ]
     }
 }
