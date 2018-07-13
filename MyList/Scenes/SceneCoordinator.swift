@@ -7,6 +7,8 @@ protocol SceneCoordinatorType {
     func transition(to scene: Scene, type: SceneTransitionType) -> Completable
     @discardableResult
     func pop(animated: Bool) -> Completable
+    @discardableResult
+    func dismiss(animated: Bool) -> Completable
 }
 
 class SceneCoordinator: SceneCoordinatorType {
@@ -52,7 +54,8 @@ class SceneCoordinator: SceneCoordinatorType {
             navigationController.pushViewController(viewController, animated: true)
             currentViewController = SceneCoordinator.actualViewController(for: viewController)
 
-        case .modal:
+        case let .modal(style):
+            viewController.modalTransitionStyle = style
             currentViewController.present(viewController, animated: true) {
                 subject.onCompleted()
             }
@@ -66,28 +69,42 @@ class SceneCoordinator: SceneCoordinatorType {
     @discardableResult
     func pop(animated: Bool) -> Completable {
         let subject = PublishSubject<Void>()
-        if let presenter = currentViewController.presentingViewController {
-            // dismiss a modal controller
-            currentViewController.dismiss(animated: animated) {
-                self.currentViewController = SceneCoordinator.actualViewController(for: presenter)
-                subject.onCompleted()
-            }
-        } else if let navigationController = currentViewController.navigationController {
-            // navigate up the stack
-            // one-off subscription to be notified when pop complete
-            _ = navigationController.rx.delegate
-                .sentMessage(#selector(UINavigationControllerDelegate.navigationController(_:didShow:animated:)))
-                .map { _ in }
-                .bind(to: subject)
-            guard navigationController.popViewController(animated: animated) != nil else {
-                fatalError("can't navigate back from \(currentViewController)")
-            }
-            currentViewController = SceneCoordinator.actualViewController(for: navigationController.viewControllers.last!)
-        } else {
-            fatalError("Not a modal, no navigation controller: can't navigate back from \(currentViewController)")
+        guard let navigationController = currentViewController.navigationController else {
+            fatalError("No navigation controller: can't navigate back from \(currentViewController)")
         }
+        // navigate up the stack
+        // one-off subscription to be notified when pop complete
+        _ = navigationController.rx.delegate
+            .sentMessage(#selector(UINavigationControllerDelegate.navigationController(_:didShow:animated:)))
+            .map { _ in }
+            .bind(to: subject)
+        guard navigationController.popViewController(animated: animated) != nil else {
+            fatalError("can't navigate back from \(currentViewController)")
+        }
+        currentViewController = SceneCoordinator.actualViewController(for: navigationController.viewControllers.last!)
+
+        return subject.asObservable()
+            .take(1)
+            .ignoreElements()
+    }
+
+    @discardableResult
+    func dismiss(animated: Bool) -> Completable {
+        let subject = PublishSubject<Void>()
+
+        guard let presenter = currentViewController.presentingViewController else {
+            fatalError("Not a modal: can't navigate back from \(currentViewController)")
+        }
+
+        currentViewController.dismiss(animated: animated) {
+            self.currentViewController = SceneCoordinator.actualViewController(for: presenter)
+            subject.onCompleted()
+        }
+
         return subject.asObservable()
             .take(1)
             .ignoreElements()
     }
 }
+
+

@@ -6,10 +6,10 @@
 //  Copyright © 2018 Carlos Villanueva Ousset. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum SceneTransitionType {
     case root
     case push
-    case modal
+    case modal(style: UIModalTransitionStyle)
 }

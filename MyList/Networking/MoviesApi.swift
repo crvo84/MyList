@@ -55,7 +55,7 @@ extension MoviesApi: TargetType {
 
     private func popularRequestParameters(page: Int) -> [String: Any] {
         return [
-            "api_key": Secrets.Api.key,
+            "api_key": Secrets.TMDBApi.key,
             "page": page,
             "language": "en-US"
         ]

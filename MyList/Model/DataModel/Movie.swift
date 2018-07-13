@@ -11,11 +11,13 @@ import Foundation
 struct Movie: DataModel {
 
     let id: String
+    let title: String
     let posterPath: String?
     let overview: String?
 
     enum CodingKeys: String, CodingKey {
         case id
+        case title
         case posterPath = "poster_path"
         case overview
     }

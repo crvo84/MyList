@@ -10,6 +10,8 @@ import UIKit
 
 class PopularMoviesViewController: UIViewController, BindableType {
 
+    @IBOutlet weak var titleLabel: UILabel!
+
     var viewModel: PopularMoviesViewModel!
 
     override func viewDidLoad() {
