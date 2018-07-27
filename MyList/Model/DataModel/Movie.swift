@@ -10,7 +10,7 @@ import Foundation
 
 struct Movie: DataModel {
 
-    let id: String
+    let id: Int
     let title: String
     let posterPath: String?
     let overview: String?

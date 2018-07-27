@@ -10,14 +10,13 @@ import Foundation
 import RxSwift
 
 protocol InitialViewModelType {
-    var sceneCoordinator: SceneCoordinatorType { get }
-    func presentLoginViewController() -> Completable
+    func showNextViewController() -> Completable
 }
 
-struct InitialViewModel {
+struct InitialViewModel: InitialViewModelType {
     let sceneCoordinator: SceneCoordinatorType
 
-    func presentPopularMoviesViewController() -> Completable {
+    func showNextViewController() -> Completable {
         let popularMoviesViewModel = PopularMoviesViewModel(sceneCoordinator: sceneCoordinator)
         return sceneCoordinator.transition(to: Scene.popularMovies(popularMoviesViewModel), type: .root)
     }

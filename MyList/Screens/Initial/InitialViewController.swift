@@ -13,28 +13,35 @@ class InitialViewController: MyTimeViewController, BindableType {
 
     var viewModel: InitialViewModel!
 
-    private var needInitialSetup = true
+    private var isInitialSetupNeeded = true
+
+    // MARK: - Life cycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationController?.isNavigationBarHidden = true
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         initialSetup()
 
-        viewModel.presentLoginViewController()
+        viewModel.showNextViewController()
             .subscribe()
             .disposed(by: disposeBag)
     }
 
-    fileprivate func initialSetup() {
-        guard needInitialSetup else { return }
-        needInitialSetup = false
+    // MARK: Setup
 
-        navigationController?.isNavigationBarHidden = true
+    func bindViewModel() {}
+
+    fileprivate func initialSetup() {
+        guard isInitialSetupNeeded else { return }
+        isInitialSetupNeeded = false
 
         let sceneCoordinator = SceneCoordinator(window: view.window!)
         self.viewModel = InitialViewModel(sceneCoordinator: sceneCoordinator)
     }
-
-    func bindViewModel() {}
 }
 

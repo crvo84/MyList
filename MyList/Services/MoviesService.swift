@@ -14,11 +14,11 @@ protocol MoviesServiceType {
     func popularMovies(page: Int) -> Observable<[Movie]>
 }
 
-struct MoviesService {
+struct MoviesService: MoviesServiceType {
 
     private let provider: MoyaProvider<MoviesApi>
 
-    init(provider: MoyaProvider<MoviesApi>) {
+    init(provider: MoyaProvider<MoviesApi> = MoviesService.getDefaultProvider()) {
         self.provider = provider
     }
 
@@ -26,5 +26,11 @@ struct MoviesService {
         return self.provider.rx.request(.popular(page: page))
             .map([Movie].self, atKeyPath: "results")
             .asObservable()
+    }
+
+    // MARK: - Helper methods
+
+    private static func getDefaultProvider() -> MoyaProvider<MoviesApi> {
+        return MoyaProvider<MoviesApi>(plugins: [NetworkLoggerPlugin(verbose: true)])
     }
 }

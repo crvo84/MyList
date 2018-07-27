@@ -10,11 +10,29 @@ import Foundation
 import RxSwift
 import Action
 
-struct PopularMoviesViewModel {
-    let sceneCoordinator: SceneCoordinatorType
-    let disposeBag = DisposeBag()
+protocol PopularMoviesViewModelType {
+    var movies: BehaviorSubject<[Movie]> { get }
+}
 
-    init(sceneCoordinator: SceneCoordinatorType) {
+class PopularMoviesViewModel: PopularMoviesViewModelType {
+
+    private let sceneCoordinator: SceneCoordinatorType
+    private let moviesService: MoviesServiceType
+    private let disposeBag = DisposeBag()
+    let movies = BehaviorSubject<[Movie]>(value: [])
+
+    init(sceneCoordinator: SceneCoordinatorType, moviesService: MoviesServiceType = MoviesService()) {
         self.sceneCoordinator = sceneCoordinator
+        self.moviesService = moviesService
     }
+
+    func loadMovies() -> Completable {
+        return moviesService.popularMovies(page: 1)
+                .asObservable()
+                .do(onNext: { [weak self] movies in
+                    self?.movies.onNext(movies)
+                })
+                .ignoreElements()
+    }
+
 }

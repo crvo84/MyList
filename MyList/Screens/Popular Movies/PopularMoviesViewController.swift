@@ -7,20 +7,60 @@
 //
 
 import UIKit
+import RxSwift
+import RxDataSources
 
 class PopularMoviesViewController: UIViewController, BindableType {
 
-    @IBOutlet weak var titleLabel: UILabel!
+    fileprivate struct CellReuseId {
+        static let movie = "MovieCell"
+    }
+
+    fileprivate struct Geometry {
+        static let movieRowHeight: CGFloat = 60
+    }
+
+    @IBOutlet fileprivate weak var tableView: UITableView!
 
     var viewModel: PopularMoviesViewModel!
+    fileprivate let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        initialSetup()
+
+        viewModel.loadMovies()
+            .subscribe()
+            .disposed(by: disposeBag)
+    }
+
+    fileprivate func initialSetup() {
+        let movieCellNib = UINib(nibName: "MovieTableViewCell", bundle: nil)
+        tableView.register(movieCellNib, forCellReuseIdentifier: CellReuseId.movie)
+        tableView.rowHeight = Geometry.movieRowHeight
     }
 
     func bindViewModel() {
-        
+        viewModel.movies
+            .asObservable()
+            .bind(to: tableView.rx.items(cellIdentifier: CellReuseId.movie, cellType: MovieTableViewCell.self)) { row, movie, cell in
+                cell.configure(with: movie)
+            }
+            .disposed(by: disposeBag)
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
