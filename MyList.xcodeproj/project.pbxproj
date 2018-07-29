@@ -33,6 +33,7 @@
 		7322817020F802DD00ECA96F /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7322816F20F802DD00ECA96F /* InitialViewController.swift */; };
 		7322817220F802E500ECA96F /* InitialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7322817120F802E500ECA96F /* InitialViewModel.swift */; };
 		7322817420F802F700ECA96F /* Initial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7322817320F802F700ECA96F /* Initial.storyboard */; };
+		73DF4888210D72B600A7A344 /* UIScrollView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DF4887210D72B600A7A344 /* UIScrollView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		7322816F20F802DD00ECA96F /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		7322817120F802E500ECA96F /* InitialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewModel.swift; sourceTree = "<group>"; };
 		7322817320F802F700ECA96F /* Initial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Initial.storyboard; sourceTree = "<group>"; };
+		73DF4887210D72B600A7A344 /* UIScrollView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extensions.swift"; sourceTree = "<group>"; };
 		CC975916B8342FACF0339A65 /* Pods-MyList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyList/Pods-MyList.debug.xcconfig"; sourceTree = "<group>"; };
 		EAA9BEB5D7D777395150B180 /* Pods-MyList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyList.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyList/Pods-MyList.release.xcconfig"; sourceTree = "<group>"; };
 		F0B1D579FEBC44F1568F6379 /* Pods_MyList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +143,7 @@
 		730E198620AE6CC100BACDAA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				73DF4887210D72B600A7A344 /* UIScrollView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				7322816D20F7FE1B00ECA96F /* MyListViewController.swift in Sources */,
 				730E377720BB6BBF00BACDAA /* Config.swift in Sources */,
 				730E199920AF627600BACDAA /* PopularMoviesViewModel.swift in Sources */,
+				73DF4888210D72B600A7A344 /* UIScrollView+Extensions.swift in Sources */,
 				730E199220AEA47C00BACDAA /* Secrets.swift in Sources */,
 				730E199720AF626900BACDAA /* PopularMoviesViewController.swift in Sources */,
 				7322817220F802E500ECA96F /* InitialViewModel.swift in Sources */,

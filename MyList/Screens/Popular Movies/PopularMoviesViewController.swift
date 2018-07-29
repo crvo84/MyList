@@ -49,6 +49,13 @@ class PopularMoviesViewController: UIViewController, BindableType {
                 cell.configure(with: movie)
             }
             .disposed(by: disposeBag)
+
+        tableView.rx.contentOffset
+            .filter { [weak self] _ in self?.tableView.isNearBottom() ?? false }
+            .subscribe(onNext: { [weak self] _ in
+                self?.loadNextPageData()
+            })
+            .disposed(by: disposeBag)
     }
 
     // MARK: - Update

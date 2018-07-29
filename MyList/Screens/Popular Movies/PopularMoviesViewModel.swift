@@ -21,9 +21,14 @@ class PopularMoviesViewModel: PopularMoviesViewModelType {
     private let moviesService: MoviesServiceType
     private let moviesSubject = Variable<[Movie]>([])
     private var nextPage = Variable<Int?>(1)
+    private let isLoadingSubject = Variable<Bool>(false)
 
     var movies: Observable<[Movie]> {
         return moviesSubject.asObservable()
+    }
+
+    var isLoading: Observable<Bool> {
+        return isLoadingSubject.asObservable()
     }
 
     init(sceneCoordinator: SceneCoordinatorType, moviesService: MoviesServiceType = MoviesService()) {
@@ -32,14 +37,17 @@ class PopularMoviesViewModel: PopularMoviesViewModelType {
     }
 
     func loadNextPage() -> Completable {
-        guard let page = nextPage.value else {
+        guard let page = nextPage.value, !isLoadingSubject.value else {
             return Completable.empty()
         }
 
         return moviesService.popularMovies(page: page)
             .do(onNext: { [weak self] movies in
                 self?.moviesSubject.value.append(contentsOf: movies)
+                self?.isLoadingSubject.value = false
+                self?.nextPage.value = page + 1
             }, onError: { [weak self] error in
+                self?.isLoadingSubject.value = false
                 self?.nextPage.value = nil
             })
             .ignoreElements()
