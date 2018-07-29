@@ -25,15 +25,16 @@ class PopularMoviesViewController: UIViewController, BindableType {
     var viewModel: PopularMoviesViewModel!
     fileprivate let disposeBag = DisposeBag()
 
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         initialSetup()
-
-        viewModel.loadMovies()
-            .subscribe()
-            .disposed(by: disposeBag)
+        loadNextPageData()
     }
+
+    // MARK: - Setup
 
     fileprivate func initialSetup() {
         let movieCellNib = UINib(nibName: "MovieTableViewCell", bundle: nil)
@@ -49,7 +50,24 @@ class PopularMoviesViewController: UIViewController, BindableType {
             }
             .disposed(by: disposeBag)
     }
+
+    // MARK: - Update
+
+    fileprivate func loadNextPageData() {
+        viewModel.loadNextPage()
+            .subscribe()
+            .disposed(by: disposeBag)
+    }
 }
+
+
+
+
+
+
+
+
+
 
 
 
