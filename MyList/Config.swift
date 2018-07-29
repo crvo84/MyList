@@ -10,6 +10,6 @@ import Foundation
 
 struct Config {
     struct TMDBApi {
-        static let baseURL = "" // e.g. "https://api.themoviedb.org/3/movie"
+        static let baseURL = "https://api.themoviedb.org/3/movie"
     }
 }
