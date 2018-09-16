@@ -6,6 +6,7 @@ use_frameworks!
 target 'MyList' do
     pod 'SnapKit', '~> 4.0.0'
     pod 'Moya/RxSwift', '~> 11.0'
+    pod 'SDWebImage', '~> 4.0'
     # pod 'RealmSwift'
 
     # RxSwift
