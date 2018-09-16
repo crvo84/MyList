@@ -17,7 +17,7 @@ class PopularMoviesViewController: UIViewController, BindableType {
     }
 
     fileprivate struct Geometry {
-        static let movieRowHeight: CGFloat = 60
+        static let movieRowEstimatedHeight: CGFloat = 100
     }
 
     @IBOutlet fileprivate weak var tableView: UITableView!
@@ -39,7 +39,8 @@ class PopularMoviesViewController: UIViewController, BindableType {
     fileprivate func initialSetup() {
         let movieCellNib = UINib(nibName: "MovieTableViewCell", bundle: nil)
         tableView.register(movieCellNib, forCellReuseIdentifier: CellReuseId.movie)
-        tableView.rowHeight = Geometry.movieRowHeight
+        tableView.estimatedRowHeight = Geometry.movieRowEstimatedHeight
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
 
     func bindViewModel() {
@@ -66,26 +67,3 @@ class PopularMoviesViewController: UIViewController, BindableType {
             .disposed(by: disposeBag)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

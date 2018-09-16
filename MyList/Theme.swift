@@ -29,7 +29,7 @@ struct Theme {
 
     struct Geometry {
         static let buttonCornerRadius: CGFloat = 5.0
-
+        static let cellCornerRadius: CGFloat = 5.0
         static let spinnerMainHeight: CGFloat = 60.0
     }
 
@@ -43,5 +43,17 @@ struct Theme {
             case .secondary: return Colors.secondaryText
             }
         }
+    }
+
+    enum CornerRadius: CGFloat {
+        case none = 0.0
+        case standard = 5.0
+    }
+}
+
+extension Theme.CornerRadius {
+    func apply(to view: UIView) {
+        view.layer.cornerRadius = rawValue
+        view.layer.masksToBounds = true
     }
 }

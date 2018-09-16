@@ -10,12 +10,26 @@ import UIKit
 
 class MovieTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var posterImageView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        initialSetup()
     }
+
+    // MARK: Setup
+
+    func initialSetup() {
+        selectionStyle = .none
+        contentView.backgroundColor = .clear
+        Theme.CornerRadius.standard.apply(to: shadowView)
+        // TODO: Create Theme.Label configured with Theme.Font, Theme.Color
+        titleLabel.textColor = .white
+    }
+
+    // MARK: - Update
 
     func configure(with movie: Movie) {
         resetUI()
@@ -23,6 +37,7 @@ class MovieTableViewCell: UITableViewCell {
     }
 
     func resetUI() {
-        titleLabel.text = nil;
+        titleLabel.text = nil
+        posterImageView.image = nil
     }
 }
