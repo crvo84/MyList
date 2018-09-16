@@ -18,6 +18,9 @@ PODS:
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
   - RxSwift (4.1.2)
+  - SDWebImage (4.4.2):
+    - SDWebImage/Core (= 4.4.2)
+  - SDWebImage/Core (4.4.2)
   - SnapKit (4.0.0)
 
 DEPENDENCIES:
@@ -26,10 +29,11 @@ DEPENDENCIES:
   - RxCocoa (~> 4.0)
   - RxDataSources (~> 3.0)
   - RxSwift (~> 4.0)
+  - SDWebImage (~> 4.0)
   - SnapKit (~> 4.0.0)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Action
     - Alamofire
     - Differentiator
@@ -38,6 +42,7 @@ SPEC REPOS:
     - RxCocoa
     - RxDataSources
     - RxSwift
+    - SDWebImage
     - SnapKit
 
 SPEC CHECKSUMS:
@@ -49,8 +54,9 @@ SPEC CHECKSUMS:
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxDataSources: cb7c31e652a87ebb919da45f716bbb87b3765f6b
   RxSwift: e49536837d9901277638493ea537394d4b55f570
+  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: aff8b1d332d3d797c78667314819090aa3ea0c31
+PODFILE CHECKSUM: afb14374b70d1f1f74d8b35e00e253d5a68d94a7
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3
