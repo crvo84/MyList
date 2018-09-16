@@ -13,8 +13,6 @@ class InitialViewController: MyTimeViewController, BindableType {
 
     var viewModel: InitialViewModel!
 
-    private var isInitialSetupNeeded = true
-
     // MARK: - Life cycle
 
     override func viewDidLoad() {
@@ -27,9 +25,8 @@ class InitialViewController: MyTimeViewController, BindableType {
 
         initialSetup()
 
-        viewModel.showNextViewController()
-            .subscribe()
-            .disposed(by: disposeBag)
+        // After some launch animation:
+        showNextViewController()
     }
 
     // MARK: Setup
@@ -37,11 +34,16 @@ class InitialViewController: MyTimeViewController, BindableType {
     func bindViewModel() {}
 
     fileprivate func initialSetup() {
-        guard isInitialSetupNeeded else { return }
-        isInitialSetupNeeded = false
-
         let sceneCoordinator = SceneCoordinator(window: view.window!)
         self.viewModel = InitialViewModel(sceneCoordinator: sceneCoordinator)
+    }
+
+    // MARK: Navigation
+
+    func showNextViewController() {
+        viewModel.showNextViewController()
+            .subscribe()
+            .disposed(by: disposeBag)
     }
 }
 

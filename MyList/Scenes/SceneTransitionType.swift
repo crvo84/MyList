@@ -9,7 +9,7 @@
 import UIKit
 
 enum SceneTransitionType {
-    case root
+    case root(animated: Bool)
     case push
     case modal(style: UIModalTransitionStyle)
 }

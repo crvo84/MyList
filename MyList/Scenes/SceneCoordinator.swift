@@ -13,6 +13,10 @@ protocol SceneCoordinatorType {
 
 class SceneCoordinator: SceneCoordinatorType {
 
+    private struct Time {
+        static let fadeInOutDuration: TimeInterval = 0.3
+    }
+
     fileprivate var window: UIWindow
     fileprivate var currentViewController: UIViewController
 
@@ -33,11 +37,32 @@ class SceneCoordinator: SceneCoordinatorType {
     func transition(to scene: Scene, type: SceneTransitionType) -> Completable {
         let subject = PublishSubject<Void>()
         let viewController = scene.viewController()
+
         switch type {
-        case .root:
-            currentViewController = SceneCoordinator.actualViewController(for: viewController)
-            window.rootViewController = viewController
-            subject.onCompleted()
+        case let .root(animated):
+            /*
+                Calling this method on a view controller lower in the stack dismisses its immediate child view controller and all view controllers above that child on the stack.
+            */
+            window.rootViewController?.dismiss(animated: false, completion: nil)
+
+            let setRootCompletion = { [weak self] in
+                self?.currentViewController = SceneCoordinator.actualViewController(for: viewController)
+                subject.onCompleted()
+            }
+
+            if animated, let snapshotView = window.snapshotView(afterScreenUpdates: true) {
+                viewController.view.addSubview(snapshotView)
+                window.rootViewController = viewController
+                UIView.animate(withDuration: Time.fadeInOutDuration, animations: {
+                    snapshotView.alpha = 0.0
+                }) { _ in
+                    snapshotView.removeFromSuperview()
+                    setRootCompletion()
+                }
+            } else {
+                window.rootViewController = viewController
+                setRootCompletion()
+            }
 
         case .push:
             guard let navigationController = currentViewController.navigationController else {

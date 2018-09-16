@@ -18,7 +18,7 @@ struct InitialViewModel: InitialViewModelType {
 
     func showNextViewController() -> Completable {
         let popularMoviesViewModel = PopularMoviesViewModel(sceneCoordinator: sceneCoordinator)
-        return sceneCoordinator.transition(to: Scene.popularMovies(popularMoviesViewModel), type: .root)
+        return sceneCoordinator.transition(to: Scene.popularMovies(popularMoviesViewModel), type: .root(animated: true))
     }
 }
 
