@@ -23,4 +23,13 @@ struct Movie: DataModel {
     }
 }
 
+extension Movie {
+    var posterUrl: URL? {
+        guard let posterPath = posterPath else { return nil }
+
+        let urlStr = Config.TMDBApi.baseURL + "/\(id)/images" + posterPath
+        return URL(string: urlStr)
+    }
+}
+
 

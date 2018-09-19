@@ -33,6 +33,7 @@
 		7322817020F802DD00ECA96F /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7322816F20F802DD00ECA96F /* InitialViewController.swift */; };
 		7322817220F802E500ECA96F /* InitialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7322817120F802E500ECA96F /* InitialViewModel.swift */; };
 		7322817420F802F700ECA96F /* Initial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7322817320F802F700ECA96F /* Initial.storyboard */; };
+		73277696214F643500699D0F /* TMDBImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73277695214F643500699D0F /* TMDBImageManager.swift */; };
 		73DF4888210D72B600A7A344 /* UIScrollView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DF4887210D72B600A7A344 /* UIScrollView+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		7322816F20F802DD00ECA96F /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		7322817120F802E500ECA96F /* InitialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewModel.swift; sourceTree = "<group>"; };
 		7322817320F802F700ECA96F /* Initial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Initial.storyboard; sourceTree = "<group>"; };
+		73277695214F643500699D0F /* TMDBImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBImageManager.swift; sourceTree = "<group>"; };
 		73DF4887210D72B600A7A344 /* UIScrollView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extensions.swift"; sourceTree = "<group>"; };
 		CC975916B8342FACF0339A65 /* Pods-MyList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyList.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyList/Pods-MyList.debug.xcconfig"; sourceTree = "<group>"; };
 		EAA9BEB5D7D777395150B180 /* Pods-MyList.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyList.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyList/Pods-MyList.release.xcconfig"; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				730E198520AE6CB200BACDAA /* Services */,
 				730E198620AE6CC100BACDAA /* Extensions */,
 				730E198E20AE998400BACDAA /* Networking */,
+				73277694214F642000699D0F /* Managers */,
 				730E197820AE617700BACDAA /* Assets.xcassets */,
 				730E197D20AE617700BACDAA /* Info.plist */,
 				730E198B20AE700800BACDAA /* Other Resources */,
@@ -212,6 +215,14 @@
 				7322817320F802F700ECA96F /* Initial.storyboard */,
 			);
 			path = Initial;
+			sourceTree = "<group>";
+		};
+		73277694214F642000699D0F /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				73277695214F643500699D0F /* TMDBImageManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		AFF5642787AFBE9971F584DC /* Pods */ = {
@@ -372,6 +383,7 @@
 				73DF4888210D72B600A7A344 /* UIScrollView+Extensions.swift in Sources */,
 				730E199220AEA47C00BACDAA /* Secrets.swift in Sources */,
 				730E199720AF626900BACDAA /* PopularMoviesViewController.swift in Sources */,
+				73277696214F643500699D0F /* TMDBImageManager.swift in Sources */,
 				7322817220F802E500ECA96F /* InitialViewModel.swift in Sources */,
 				730E199D20AF691000BACDAA /* MyListError.swift in Sources */,
 				730E197220AE617600BACDAA /* AppDelegate.swift in Sources */,
@@ -531,7 +543,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9F26XL4W94;
 				INFOPLIST_FILE = "$(SRCROOT)/MyList/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.villou.MyList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -547,7 +562,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9F26XL4W94;
 				INFOPLIST_FILE = "$(SRCROOT)/MyList/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.villou.MyList;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

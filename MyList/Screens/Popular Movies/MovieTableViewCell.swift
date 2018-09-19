@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class MovieTableViewCell: UITableViewCell {
 
@@ -34,6 +35,7 @@ class MovieTableViewCell: UITableViewCell {
     func configure(with movie: Movie) {
         resetUI()
         titleLabel.text = movie.title
+        posterImageView.setTMDBImageWithPath(movie.posterPath)
     }
 
     func resetUI() {

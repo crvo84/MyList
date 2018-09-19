@@ -11,5 +11,6 @@ import Foundation
 struct Config {
     struct TMDBApi {
         static let baseURL = "https://api.themoviedb.org/3/movie"
+        static let imageBaseURL = "https://image.tmdb.org/t/p"
     }
 }
